@@ -3,7 +3,7 @@
 
     <div class="contenedor-botones">
         <a href="/nuevo-grupo" class="btn btn-amarillo">Nuevo Grupo</a>
-        <a href="/nuevo-meeti" class="btn btn-azul">Nuevo Meeti</a>
+        <a href="/nuevo-meeti" class="btn btn-azul">Nuevo Evento</a>
         <a href="/editar-perfil" class="btn btn-rosa">Editar Perfil</a>
         <a href="/cambiar-password" class="btn btn-verde">Cambiar Password</a>
         <a href="/imagen-perfil" class="btn btn-amarillo">Imagen Perfil</a>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="acciones contenedor-botones">
                     <a href="/editar-meeti/<%= meet.id %>" class="btn btn-verde">Editar</a>
-                    <a href="/asistentes-meeti/<%= meet.id %>" class="btn btn-azul2">Asistentes</a>
+                    <a href="/asistentes/<%= meet.slug  %> " class="btn btn-azul2">Asistentes</a>
                     <a href="/eliminar-meeti/<%= meet.id %>" class="btn btn-rojo">Eliminar</a>
                 </div>
             </li>
@@ -73,7 +73,7 @@
                 </div>
                 <div class="acciones contenedor-botones">
                     <a href="/editar-meeti/<%= meet.id %>" class="btn btn-verde">Editar</a>
-                    <a href="/asistentes-meeti/<%= meet.id %>" class="btn btn-azul2">Asistentes</a>
+                    <a href="/asistentes/<%= meet.slug  %> " class="btn btn-azul2">Asistentes</a>
                     <a href="/eliminar-meeti/<%= meet.id %>" class="btn btn-rojo">Eliminar</a>
                 </div>
             </li>

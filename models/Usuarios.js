@@ -28,7 +28,11 @@ const Usuarios = db.define('usuarios', {
         validate : {
             notEmpty : {
                 msg : 'El password no puede ir vacio'
-            }
+            },
+            len: {
+                args: [3,15],
+                msg: "Debe ser entre 3 y 15 caracteres"
+           }
         }
     }, 
     activo : {

@@ -18,8 +18,7 @@
             <select name="pais">
                 <option value="" selected>-- Todos --</option>
                 <option value="CHL">Chile</option>
-                <option value="COL">Colombia</option>
-                <option value="ARG">Argentina</option>
+                
                
             </select>
             <input type="submit" value="Buscar" class="btn btn-rosa">
@@ -28,7 +27,7 @@
 </div>
 
 <div class="contenedor">
-    <h2>Próximos Meeti's</h2>
+    <h2>Próximos Eventos</h2>
     <div class="grid columnas-md-3 ">
         <%  if(meetis.length > 0) {%>
         <%  meetis.forEach(meeti => { %>
@@ -60,7 +59,8 @@
                 </div>
             </div>
         <% }) %> 
-        <% } %> 
+        <% } %> 3
+        
     </div>   
 </div>
 

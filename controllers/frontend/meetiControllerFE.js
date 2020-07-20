@@ -141,7 +141,7 @@ exports.mostrarAsistentes = async (req, res) => {
 }
 
 
-// MUESTRA LOS MEETIS AGRUPADOS A LA CATEGORIA 
+// MUESTRA LOS eventos AGRUPADOS A LA CATEGORIA 
 
 exports.mostrarCategoria = async (req, res, next) => {
     const categoria = await Categorias.findOne({ 

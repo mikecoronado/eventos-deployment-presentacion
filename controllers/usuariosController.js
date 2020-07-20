@@ -65,13 +65,13 @@ exports.crearNuevaCuenta = async (req, res) => {
  
     //**************Reglas y Sanityze****************
     const rules = [   
-        check('nombre').not().isEmpty().withMessage('El nombre esObligatorio').escape(),
+        check('nombre').not().isEmpty().withMessage('El nombre esObligatorio').escape().isLength({min: 2}).withMessage('Minimo 2 caracteres'),
     
-        check('email').isEmail().normalizeEmail().withMessage('El email valido').escape(),
+        check('email').isEmail().normalizeEmail().withMessage('El email  es invalido').escape(),
         
-        check('password').not().isEmpty().withMessage('Password no puede irvacío').escape(),
-    
-        check('confirmar').equals(usuario.password).withMessage('El password es diferente').escape(),
+        check('password').not().isEmpty().withMessage('Password no puede irvacío').escape().isLength({ min: 3 }).equals(req.body.confirmar),
+        
+
     ];
  
     //***********Ejecutar Validaciones Express***********

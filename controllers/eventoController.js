@@ -1,10 +1,12 @@
 const Grupos = require('../models/Grupos');
 const Meeti = require('../models/Eventos');
+const Usuarios = require('../models/Usuarios');
+
 const { check, validationResult} = require('express-validator');
 const { v4: uuidv4 } = require('uuid');
 
 
-// Muestra el formulario para nuevos Meeti
+// Muestra el formulario para nuevos Eventos
 exports.formNuevoMeeti = async (req, res) => {
     const grupos = await Grupos.findAll({ where : { usuarioId : req.user.id }});
 
@@ -15,7 +17,7 @@ exports.formNuevoMeeti = async (req, res) => {
 }
 
 
-// INSERTAR NUEVOS MEETI EN LA BD
+// INSERTAR NUEVOS Eventos EN LA BD
 exports.crearEvento = async(req,res) => {
     // obtener los datos
      // obtener los datos
@@ -73,7 +75,7 @@ exports.sanitizarEventos = (req, res, next) => {
  
 }
 
-// muestra el formulario para editar un metti 
+// muestra el formulario para editar un evento
 exports.formEditarEvento = async (req, res, next) =>{
 
     const consultas = [];
@@ -101,7 +103,7 @@ exports.formEditarEvento = async (req, res, next) =>{
 
 
 
-// Almacena los cambios en el meeti
+// Almacena los cambios en elevento
 exports.editarEvento = async( req,res,next) =>{
     const meeti = await Meeti.findOne({ where : { id: req.params.id, usuarioId : req.user.id }});
 
@@ -149,7 +151,7 @@ exports.formEliminarEvento = async(req, res ,next) => {
     }
 
     res.render('eliminar-meeti', {
-        nombrePagina: `Eliminar Meeti: ${meeti.titulo}`
+        nombrePagina: `Eliminar Evento: ${meeti.titulo}`
     })
 }
  
@@ -164,4 +166,29 @@ exports.eliminarEvento = async (req, res) => {
 
     req.flash('exito', 'Evento eliminado con exito');
     res.redirect('/administracion');
+}
+
+
+
+
+// muestra el listado de asistentes
+exports.mostrarAsistentes = async (req, res) => {
+    const meeti = await Meeti.findOne({
+                                    where: { id: req.params.slug },
+                                    attributes: ['interesados']
+    });
+
+    // extraer interesados
+    const { interesados } = meeti;
+
+    const asistentes = await Usuarios.findAll({
+        attributes: ['nombre', 'imagen'],
+        where : { id : interesados }
+    });
+
+    // crear la vista y pasar datos
+    res.render('asistentes-meeti', {
+        nombrePagina : 'Listado Asistentes Eventos',
+        asistentes
+    })
 }

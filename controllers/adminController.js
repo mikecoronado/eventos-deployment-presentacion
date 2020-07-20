@@ -5,6 +5,9 @@ const moment = require('moment');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
+const Usuarios = require('../models/Usuarios');
+
+
 exports.panelAdministracion = async (req, res) => {
 
 
@@ -34,3 +37,4 @@ exports.panelAdministracion = async (req, res) => {
         moment
     })
 }
+

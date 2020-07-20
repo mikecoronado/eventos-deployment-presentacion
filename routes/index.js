@@ -33,6 +33,8 @@ module.exports = function() {
         meetiControllerFE.mostrarAsistentes
     );
 
+    
+
 
     // AGREGAR COMENTARIOS A LOS EVENTOS
     router.post('/meeti/:id',
@@ -173,6 +175,11 @@ module.exports = function() {
          meetiController.editarEvento
     );
 
+
+    router.get('/asistentes/:slug',
+        authController.usuarioAutenticado,
+         meetiController.mostrarAsistentes
+    );
 
     // ELIMINAR EVENTO
     router.get('/eliminar-meeti/:id',
